@@ -2,8 +2,8 @@
 #include "graphics.h"
 #include "sprite.h"
 
-/*AnimatedSprite class
-animates our sprites
+/* AnimatedSprite class
+* Animates our sprites
 */
 
 AnimatedSprite::AnimatedSprite() {}
@@ -15,8 +15,7 @@ AnimatedSprite::AnimatedSprite(Graphics &graphics, const std::string &filePath, 
 	_timeToUpdate(timeToUpdate),
 	_visible(true),
 	_currentAnimationOnce(false),
-	_currentAnimation(""),
-	_timeElapsed(0)
+	_currentAnimation("")
 {}
 
 void AnimatedSprite::addAnimation(int frames, int x, int y, std::string name, int width, int height, Vector2 offset) {
@@ -46,7 +45,7 @@ void AnimatedSprite::setVisible(bool visible) {
 	this->_visible = visible;
 }
 
-void AnimatedSprite::stopAnimations() {
+void AnimatedSprite::stopAnimation() {
 	this->_frameIndex = 0;
 	this->animationDone(this->_currentAnimation);
 }
@@ -81,13 +80,4 @@ void AnimatedSprite::draw(Graphics &graphics, int x, int y) {
 		SDL_Rect sourceRect = this->_animations[this->_currentAnimation][this->_frameIndex];
 		graphics.blitSurface(this->_spriteSheet, &sourceRect, &destinationRectangle);
 	}
-}
-
-void AnimatedSprite::animationDone(std::string currentAnimation) {
-
-}
-
-void AnimatedSprite::setupAnimations() {
-	this->addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0, 0));
-	this->addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0, 0));
 }
