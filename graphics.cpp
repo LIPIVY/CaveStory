@@ -1,4 +1,3 @@
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <algorithm>
@@ -13,19 +12,19 @@ Holds all information dealing with graphics for the game
 
 Graphics::Graphics() {
 	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &this->_window, &this->_renderer);
-	SDL_SetWindowTitle(this->_window, "Cave Story");
-}
+	SDL_SetWindowTitle(this->_window, "Best Girl");
+	}
 
 Graphics::~Graphics()
 {
 	SDL_DestroyWindow(this->_window);
-	SDL_DestroyRenderer(this->_renderer);
+	SDL_DestroyRenderer(this->_renderer);	
 }
 
 SDL_Surface* Graphics::loadImage(const std::string &filePath) {
 	if (this->_spriteSheets.count(filePath) == 0) {
-		this->_spriteSheets[filePath] = IMG_Load(filePath.c_str());
-	}
+			this->_spriteSheets[filePath] = IMG_Load(filePath.c_str());
+		}
 	return this->_spriteSheets[filePath];
 }
 
